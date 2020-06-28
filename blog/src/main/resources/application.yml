@@ -1,0 +1,19 @@
+server:
+  port: 8062
+spring:
+  profiles:
+    active: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/myblog?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&seUnicode=true
+    username: root
+    password: passw0rd
+  jpa:
+    #配置jpa的默认引擎为innoDB
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        #遇到大写字母 加"_"的命名
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
