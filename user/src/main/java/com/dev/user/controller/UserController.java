@@ -40,8 +40,8 @@ public class UserController {
      * @Date: 2020/6/15
      */
     @GetMapping("/signIn")
-    public R signIn(@NotNull String username, @NotNull String password) {
-        return userService.signIn(username, password);
+    public R signIn(@NotNull String username, @NotNull String password, @NotNull String name) {
+        return userService.signIn(username, password, name);
     }
 
     @GetMapping("/signUp")

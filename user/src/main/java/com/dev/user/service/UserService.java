@@ -10,7 +10,7 @@ import com.dev.common.api.R;
  */
 public interface UserService {
 
-    R signIn(String username, String password);
+    R signIn(String username, String password, String name);
 
     R signUp(String username, String password);
 }

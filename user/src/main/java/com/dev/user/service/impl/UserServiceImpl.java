@@ -35,9 +35,9 @@ public class UserServiceImpl implements UserService {
      * @Date: 2020/6/15
      */
     @Override
-    public R signIn(String username, String password) {
+    public R signIn(String username, String password, String name) {
         //判断用户名是否重复
-        if (userDao.findAllByUsername(username) != null) return R.success("用户名重复！");
+        if (userDao.findAllByUsername(username) != null) return R.fail("用户名重复！");
         //用生成的uuid做盐值
         String salt = UUID.randomUUID().toString().replaceAll("-", "");
         password = Md5Util.encryptPassword(username, password, salt);
@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
         userDao.save(user);
         //创建用户信息
         UserInfo userInfo = new UserInfo();
+        userInfo.setName(name);
         userInfo.setUserId(user.getId());
         userInfoDao.save(userInfo);
         return R.success();
