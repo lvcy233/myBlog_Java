@@ -1,0 +1,49 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+      discovery:
+        locator:
+          enabled: true
+      # 配置路由规则
+      routes:
+        # 采用自定义路由 ID 没什么要求 建议服务名加下标
+        - id: cloud-blog
+          # 采用 LoadBalanceClient 方式请求，以 lb:// 开头，后面的是注册在 Nacos 上的服务名 lb：默认开启负载算法
+          uri: lb://cloud-blog
+          #路由优先级
+          orser: 1
+          # “断言”，主要作用是匹配用户的请求，有很多种用法
+          predicates:
+            # Method 方法谓词
+            - Method=GET,POST
+            # 请求必须以下打头才会走这个路由
+            - Path=/cloud-blog/**
+          filters:
+            - StripPrefix= 1
+        - id: cloud-user
+          # 采用 LoadBalanceClient 方式请求，以 lb:// 开头，后面的是注册在 Nacos 上的服务名 lb：默认开启负载算法
+          uri: lb://cloud-user
+          #路由优先级
+          orser: 1
+          # “断言”，主要作用是匹配用户的请求，有很多种用法
+          predicates:
+            # Method 方法谓词
+            - Method=GET,POST
+            # 请求必须以下打头才会走这个路由
+            - Path=/cloud-user/**
+          filters:
+            - StripPrefix= 1
