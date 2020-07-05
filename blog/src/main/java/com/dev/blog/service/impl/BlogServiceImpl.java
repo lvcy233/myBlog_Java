@@ -73,9 +73,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public boolean uploadBlog(FilePart file, Integer userInfoId) {
         UserInfo userInfo = userInfoService.findById(userInfoId);
-        if (true) {
-            return true;
-        }
         Blog blog = new Blog();
         //获取文件名
         String fileName = file.filename();
@@ -93,9 +90,10 @@ public class BlogServiceImpl implements BlogService {
                 content += tempString + "\n";
                 line++;
             }
-//            blog.setTitle(fileName);
-//            blog.setContent(content);
-//            blogDao.save(blog);
+            //截取文章名
+            blog.setTitle(fileName.substring(0,fileName.lastIndexOf(".")));
+            blog.setContent(content);
+            blogDao.save(blog);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
