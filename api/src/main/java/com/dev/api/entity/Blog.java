@@ -17,8 +17,6 @@ import javax.persistence.Table;
 @org.hibernate.annotations.Table(appliesTo = "blog",comment="博客数据")
 public class Blog extends BaseModel{
 
-    private static final long serialVersionUID = 1L;
-
     @Column(name = "title",columnDefinition="varchar(64) COMMENT '标题'")
     private String title;
 

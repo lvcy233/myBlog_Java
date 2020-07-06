@@ -48,8 +48,10 @@ public class BlogController {
      */
     @PostMapping("uploadBlog")
     public boolean uploadBlog(@RequestPart("file") FilePart file,//获取文件参数
-                              @RequestPart("UserInfoId") String UserInfoId) {
-        blogService.uploadBlog(file, Integer.parseInt(UserInfoId));
+                              @RequestPart("userInfoId") String userInfoId,
+                              @RequestPart("categories") String categories,
+                              @RequestPart("tags") String tags) {
+        blogService.uploadBlog(file, Integer.parseInt(userInfoId), categories, tags);
         return true;
     }
 }

@@ -16,15 +16,7 @@ public interface BlogService {
 
     Blog queryById(Integer id);
 
-    Page<Blog> queryAllByLimit(int offset, int limit);
-
-    Blog insert(Blog blog);
-
-    Blog update(Blog blog);
-
-    boolean deleteById(Integer id);
-
     List<Blog> getAll();
 
-    boolean uploadBlog(FilePart file, Integer userInfoId);
+    boolean uploadBlog(FilePart file, Integer userInfoId, String categories, String tags);
 }

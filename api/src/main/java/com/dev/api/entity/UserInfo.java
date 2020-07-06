@@ -16,8 +16,6 @@ import javax.persistence.*;
 @org.hibernate.annotations.Table(appliesTo = "user_info",comment="用户信息表")
 public class UserInfo extends BaseModel{
 
-    private static final long serialVersionUID = 1L;
-
     @Column(name = "name",columnDefinition="varchar(64) COMMENT '昵称'")
     private String name;
 

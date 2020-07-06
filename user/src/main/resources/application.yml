@@ -3,10 +3,10 @@ server:
 spring:
   application:
     name: cloud-user
-    cloud:
-      nacos:
-        discovery:
-          server-addr: 127.0.0.1:8848
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.196.55.80:8848
   profiles:
     active: dev
   datasource:

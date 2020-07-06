@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 @org.hibernate.annotations.Table(appliesTo = "user",comment="用户表")
 public class User extends BaseModel{
 
-    private static final long serialVersionUID = 1L;
-
     @NotNull
     @Column(name = "username",columnDefinition="varchar(255) COMMENT 'username'")
     private String username;

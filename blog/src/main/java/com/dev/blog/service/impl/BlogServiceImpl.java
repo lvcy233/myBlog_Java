@@ -5,8 +5,6 @@ import com.dev.api.entity.UserInfo;
 import com.dev.blog.dao.BlogDao;
 import com.dev.blog.service.BlogService;
 import com.dev.user.service.UserInfoService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
 
@@ -43,35 +41,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Page<Blog> queryAllByLimit(int offset, int limit) {
-        return this.blogDao.findAll(PageRequest.of((offset - 1)
-                * limit, limit));
-    }
-
-    @Override
-    public Blog insert(Blog blog) {
-        return this.blogDao.save(blog);
-    }
-
-    @Override
-    public Blog update(Blog blog) {
-        return this.blogDao.save(blog);
-    }
-
-
-    @Override
-    public boolean deleteById(Integer id) {
-
-        try {
-            this.blogDao.deleteById(id);
-        } catch (Exception ex) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean uploadBlog(FilePart file, Integer userInfoId) {
+    public boolean uploadBlog(FilePart file, Integer userInfoId, String categories, String tags) {
         UserInfo userInfo = userInfoService.findById(userInfoId);
         Blog blog = new Blog();
         //获取文件名
@@ -92,7 +62,14 @@ public class BlogServiceImpl implements BlogService {
             }
             //截取文章名
             blog.setTitle(fileName.substring(0,fileName.lastIndexOf(".")));
+            //插入内容
             blog.setContent(content);
+            //分类
+            if (!categories.isEmpty())
+                blog.setCategories(categories);
+            //标签
+            if (!tags.isEmpty())
+                blog.setTags(tags);
             blogDao.save(blog);
         } catch (IOException e) {
             e.printStackTrace();
