@@ -4,6 +4,8 @@ import com.dev.api.entity.Blog;
 import com.dev.api.entity.UserInfo;
 import com.dev.blog.dao.BlogDao;
 import com.dev.blog.service.BlogService;
+import com.dev.blog.service.CategoriesService;
+import com.dev.blog.service.TagsService;
 import com.dev.user.service.UserInfoService;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Resource
     private UserInfoService userInfoService;
+
+    @Resource
+    private CategoriesService categoriesService;
+
+    @Resource
+    private TagsService tagsService;
 
     @Override
     public Blog queryById(Integer id) {
@@ -65,6 +73,7 @@ public class BlogServiceImpl implements BlogService {
             //插入内容
             blog.setContent(content);
             //分类
+
             if (!categories.isEmpty())
                 blog.setCategories(categories);
             //标签
