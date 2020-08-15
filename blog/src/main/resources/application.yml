@@ -15,11 +15,10 @@ spring:
     url: jdbc:mysql://121.196.55.80:3306/myblog?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&seUnicode=true
     username: root
     password: 123456
-  jpa:
-    #配置jpa的默认引擎为innoDB
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
-      naming:
-        #遇到大写字母 加"_"的命名
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
