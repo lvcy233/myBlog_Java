@@ -17,4 +17,5 @@ public interface UserService extends IService<User> {
     public R signIn(String username, String password, String name);
 
     public R signUp(String username, String password);
+
 }

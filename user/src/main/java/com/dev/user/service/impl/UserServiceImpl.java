@@ -6,11 +6,13 @@ import com.dev.api.entity.User;
 import com.dev.api.entity.UserInfo;
 import com.dev.common.api.R;
 import com.dev.common.util.Md5Util;
+import com.dev.user.config.JwtConfig;
 import com.dev.user.mapper.UserMapper;
 import com.dev.user.service.UserInfoService;
 import com.dev.user.service.UserService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,8 +26,12 @@ import java.util.UUID;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
-
+    @Resource
     private UserInfoService userInfoService;
+
+    @Resource
+    private JwtConfig jwtConfig ;
+
 
     /**
      * 注册
@@ -82,6 +88,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         //查询用户信息
         UserInfo userInfo = userInfoService.getById(user.getId());
+        //返回用户token
+        String token = jwtConfig.createToken("123");
+        userInfo.setToken(token);
         return R.success(userInfo);
     }
 }

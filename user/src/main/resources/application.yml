@@ -3,10 +3,10 @@ server:
 spring:
   application:
     name: cloud-user
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 121.196.55.80:8848
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 121.196.55.80:8848
   profiles:
     active: dev
   datasource:
@@ -22,3 +22,11 @@ mybatis-plus:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
+config:
+  jwt:
+    # 加密密钥
+    secret: dongdedoudong
+    # token有效时长
+    expire: 3600
+    # header 名称
+    header: token
