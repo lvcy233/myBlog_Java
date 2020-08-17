@@ -13,13 +13,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.blog</groupId>
-            <artifactId>core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>3.3.1.tmp</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
