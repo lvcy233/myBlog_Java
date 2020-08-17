@@ -62,13 +62,13 @@ public class LogAopAspect {
         //获取方法名
         String method = pjp.getSignature().getName();
         try{
-            System.out.println("执行方法：——————————————————————————————————" + method);
+            System.out.println("执行方法开始：——————————————————————————————————" + method);
             //调用方法
             pjp.proceed();
-            System.out.println("方法执行结束：——————————————————————————————" + method);
+            System.out.println("方法执行结束：——————————————————————————————————" + method);
         }
         catch(Throwable e){
-            System.out.println("异常通知：——————————————————————————————————" + method);
+            System.out.println("方法执行异常：——————————————————————————————————" + method);
         }
     }
 }
