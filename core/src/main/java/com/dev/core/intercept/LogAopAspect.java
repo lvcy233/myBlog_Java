@@ -17,9 +17,9 @@ public class LogAopAspect {
     /**
      * 定义切点
      */
-    @Pointcut("execution(public * com.dev.*.controller.*(..)))")
+    @Pointcut("execution(public * com.dev..controller..*(..)))")
     public void LogAopAspect(){
-
+        System.out.println("LogAopAspect");
     }
 
 //    /**

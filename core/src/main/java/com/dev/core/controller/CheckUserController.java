@@ -31,4 +31,10 @@ public class CheckUserController {
         }
     }
 
+
+    @GetMapping("get")
+    public String get(){
+        System.out.println("/get");
+        return "1";
+    }
 }

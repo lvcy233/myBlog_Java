@@ -97,7 +97,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //将token存入redis 设置生存时间未30分钟
         redisUtil.set(userInfo.getUserId().toString(),token);
         redisUtil.expire(userInfo.getUserId().toString(),1800);
-        userInfo.setToken(token);
+        //userInfo.setToken(token);
         return R.success(userInfo);
     }
 }
