@@ -9,11 +9,9 @@ public class RExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     R handleControllerException(Throwable e){
-//        if () {
-//
-//        } else {
-//
-//        }
-        return R.fail("1");
+        if (false) {
+
+        }
+        return R.fail("系统异常，请稍后重试！");
     }
 }
