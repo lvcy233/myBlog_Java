@@ -1,4 +1,4 @@
-package com.dev.common.util;
+package com.dev.core.util;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

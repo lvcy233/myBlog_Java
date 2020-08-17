@@ -1,4 +1,4 @@
-package com.dev.common.api;
+package com.dev.core.api;
 
 import java.io.Serializable;
 

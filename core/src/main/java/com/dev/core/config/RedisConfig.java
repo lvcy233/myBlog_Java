@@ -1,4 +1,4 @@
-package com.dev.authority.config;
+package com.dev.core.config;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

@@ -1,4 +1,4 @@
-package com.common.test;
+package com.core.test;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -20,7 +20,7 @@ public class TableGenerate {
         String path = System.getProperty("user.dir");
         //子项目要改user这个为子module名
         globalConfig.setOutputDir(path + "/" + PACKAGE + "/src/main/java")
-        //globalConfig.setOutputDir(path + "/user/src/main/java")
+                //globalConfig.setOutputDir(path + "/user/src/main/java")
                 .setAuthor("lvcy")
                 .setOpen(false)
                 .setFileOverride(false)
