@@ -6,6 +6,7 @@ import com.dev.api.entity.User;
 import com.dev.api.entity.UserInfo;
 import com.dev.core.util.Md5Util;
 import com.dev.core.api.R;
+import com.dev.core.util.RedisUtil;
 import com.dev.user.config.JwtConfig;
 import com.dev.user.mapper.UserMapper;
 import com.dev.user.service.UserInfoService;
@@ -31,6 +32,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Resource
     private JwtConfig jwtConfig ;
+
+    @Resource
+    private RedisUtil redisUtil ;
 
 
     /**
@@ -89,7 +93,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //查询用户信息
         UserInfo userInfo = userInfoService.getById(user.getId());
         //返回用户token
-        String token = jwtConfig.createToken("123");
+        String token = jwtConfig.createToken(userInfo.getUserId().toString());
+        //将token存入redis 设置生存时间未30分钟
+        redisUtil.set(userInfo.getUserId().toString(),token);
+        redisUtil.expire(userInfo.getUserId().toString(),1800);
         userInfo.setToken(token);
         return R.success(userInfo);
     }
