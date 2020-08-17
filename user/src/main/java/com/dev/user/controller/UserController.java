@@ -1,14 +1,12 @@
 package com.dev.user.controller;
 
 
-import com.dev.common.api.R;
+import com.dev.core.api.R;
 import com.dev.user.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**

@@ -2,7 +2,7 @@ package com.dev.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.dev.api.entity.User;
-import com.dev.common.api.R;
+import com.dev.core.api.R;
 
 /**
  * <p>

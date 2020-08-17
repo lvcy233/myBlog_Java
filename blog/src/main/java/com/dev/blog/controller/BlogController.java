@@ -1,8 +1,8 @@
 package com.dev.blog.controller;
 
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.dev.blog.service.BlogService;
-import com.dev.common.api.R;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
