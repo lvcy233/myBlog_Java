@@ -60,13 +60,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         user.setUsername(username);
         user.setPassword(password);
         user.setSalt(salt);
-        this.save(user);
-        //创建用户信息
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(name);
-        userInfo.setUserId(user.getId());
-        userInfoService.save(userInfo);
-        return R.success();
+        if (this.save(user)){
+            //创建用户信息
+            UserInfo userInfo = new UserInfo();
+            userInfo.setName(name);
+            userInfo.setUserId(user.getId());
+            if (userInfoService.save(userInfo)) {
+                return R.success();
+            }
+        }
+        return R.fail("注册用户失败！");
     }
 
     /**

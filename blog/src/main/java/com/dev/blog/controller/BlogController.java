@@ -1,9 +1,12 @@
 package com.dev.blog.controller;
 
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.dev.blog.service.BlogService;
+import com.dev.core.api.R;
+import org.springframework.data.domain.Page;
 import org.springframework.http.codec.multipart.FilePart;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +28,29 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
+    /**
+     * 上传博客
+     *
+     * @param file       博客文件
+     * @param userInfoId 用户信息id
+     * @param categories 分类
+     * @param tags       标签
+     * @return
+     */
+    @PostMapping("/uploadBlog")
     public R uploadBlog(FilePart file, Integer userInfoId, List<Long> categories, List<Long> tags) {
         return blogService.uploadBlog(file, userInfoId, categories, tags);
+    }
+
+    /**
+     * 查询博客页面
+     * @param categories 分类
+     * @param tags 标签
+     * @return
+     */
+    @GetMapping("getBlogList")
+    public Page getBlogList(List<Long> categories, List<Long> tags) {
+        return blogService.getBlogList(null, categories, tags);
     }
 }
 

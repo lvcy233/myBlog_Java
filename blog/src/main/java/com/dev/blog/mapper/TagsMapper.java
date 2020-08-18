@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TagsMapper extends BaseMapper<Tags> {
 
+    int queryByTag(String tag);
 }

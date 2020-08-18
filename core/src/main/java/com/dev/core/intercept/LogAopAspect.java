@@ -19,7 +19,7 @@ public class LogAopAspect {
      */
     @Pointcut("execution(public * com.dev..controller..*(..)))")
     public void LogAopAspect(){
-        System.out.println("LogAopAspect");
+
     }
 
 //    /**

@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface CategoriesMapper extends BaseMapper<Categories> {
 
+    int queryByCategory(String category);
 }

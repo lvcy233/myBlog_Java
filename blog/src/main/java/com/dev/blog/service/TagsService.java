@@ -2,6 +2,7 @@ package com.dev.blog.service;
 
 import com.dev.api.entity.Tags;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.dev.core.api.R;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TagsService extends IService<Tags> {
 
+    public R addTag(String tag);
 }

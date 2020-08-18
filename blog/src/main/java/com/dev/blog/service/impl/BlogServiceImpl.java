@@ -11,6 +11,7 @@ import com.dev.blog.service.BlogService;
 import com.dev.blog.service.BlogTagsService;
 import com.dev.core.api.R;
 import com.dev.user.service.UserInfoService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
 
@@ -102,5 +103,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             }
         }
         return R.fail("上传失败");
+    }
+
+    @Override
+    public Page getBlogList(Long userInfoId, List<Long> categories, List<Long> tags) {
+        return null;
     }
 }

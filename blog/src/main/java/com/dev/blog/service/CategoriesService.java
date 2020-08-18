@@ -2,6 +2,7 @@ package com.dev.blog.service;
 
 import com.dev.api.entity.Categories;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.dev.core.api.R;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CategoriesService extends IService<Categories> {
 
+    public R addCategory(String category);
 }
