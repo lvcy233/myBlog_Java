@@ -50,7 +50,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username",username);
         List<User> userList = this.list(queryWrapper);
-        if (userList.size() == 0) {
+        if (userList.size() != 0) {
             return R.fail("用户名重复！");
         }
         //用生成的uuid做盐值

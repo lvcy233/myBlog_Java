@@ -1,11 +1,9 @@
 package com.dev.gateway.filter;
 
 
-import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -35,6 +33,12 @@ public class JwtCheckFilterFactory implements GlobalFilter, Ordered {
         HttpHeaders headers = request.getHeaders();
         String token = headers.getFirst(AUTHORIZE_TOKEN);
         String uid = headers.getFirst(AUTHORIZE_UID);
+        //设置路径白名单   涉及到blog的url 放行
+        String path = request.getURI().getPath();
+        //静态资源访问,接口通过判断url中是否含有指定的字符来判断是否放行,在这里设置url的白名单
+        if(path.indexOf("/blog/getAll")!= -1||path.indexOf("/cloud-user/user/signIn")!= -1){
+            return chain.filter(exchange);
+        }
         if (token == null) {
             token = request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
         }
