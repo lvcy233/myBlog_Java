@@ -23,8 +23,8 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("/signIn")
-    public R signIn(String username, String password, String name) {
+    @PostMapping("/signIn")
+    public R signIn(@RequestBody String username,@RequestBody String password, @RequestBody String name) {
         return userService.signIn(username, password, name);
     }
 
