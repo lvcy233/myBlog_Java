@@ -1,12 +1,18 @@
 package com.dev.user.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.dev.core.api.R;
 import com.dev.user.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -24,8 +30,10 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/signIn")
-    public R signIn(@RequestBody String username,@RequestBody String password, @RequestBody String name) {
-        return userService.signIn(username, password, name);
+    public R signIn(@RequestBody String value) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String,String> maps = mapper.readValue(value, Map.class);
+        return userService.signIn(maps.get("username"),maps.get("password"),maps.get("name"));
     }
 
     @GetMapping("/signUp")
