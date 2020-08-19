@@ -1,6 +1,7 @@
 package com.dev.core.intercept;
 
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -56,9 +57,12 @@ class TokenCheckAspect {
      * @throws Throwable
      * @author: max
      */
-    @Around("validateToken()")
-    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Before("validateToken()")
+    public Object around(JoinPoint joinPoint) throws Throwable {
         //逻辑代码
+        Object result = null;
+        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
         return null;
     }
 }
