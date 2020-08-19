@@ -2,9 +2,11 @@ package com.dev.core.intercept;
 
 import com.dev.core.api.R;
 import com.dev.core.util.ThrowableMessageUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,8 +18,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LogAopAspect {
-
-    private static Logger logger;
+    @Autowired
+    private static Logger logger = Logger.getLogger(LogAopAspect.class);
 
     /**
      * 定义切点
