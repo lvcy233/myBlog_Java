@@ -3,6 +3,9 @@ package com.dev.blog.service;
 import com.dev.api.entity.BlogTags;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  * 博客标签表 服务类
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface BlogTagsService extends IService<BlogTags> {
 
+    public List<Map<String, Object>> queryByTags(List<Long> tags);
 }

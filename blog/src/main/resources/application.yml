@@ -2,7 +2,7 @@ server:
   port: 8062
 spring:
   application:
-    name: cloud-blog
+    name: cloud-blog-lvcy
   cloud:
     nacos:
       discovery:

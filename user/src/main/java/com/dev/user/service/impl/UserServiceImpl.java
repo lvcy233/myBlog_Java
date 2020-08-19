@@ -96,10 +96,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //查询用户信息
         UserInfo userInfo = userInfoService.getById(user.getId());
         //返回用户token
-        String token = jwtConfig.createToken(userInfo.getUserId().toString());
-        //将token存入redis 设置生存时间未30分钟
-        redisUtil.set(userInfo.getUserId().toString(),token);
-        redisUtil.expire(userInfo.getUserId().toString(),1800);
+//        String token = jwtConfig.createToken(userInfo.getUserId().toString());
+//        //将token存入redis 设置生存时间未30分钟
+//        redisUtil.set(userInfo.getUserId().toString(),token);
+//        redisUtil.expire(userInfo.getUserId().toString(),1800);
         //userInfo.setToken(token);
         return R.success(userInfo);
     }

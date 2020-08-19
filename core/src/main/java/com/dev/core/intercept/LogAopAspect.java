@@ -1,5 +1,8 @@
 package com.dev.core.intercept;
 
+import com.dev.core.api.R;
+import com.dev.core.util.ThrowableMessageUtil;
+import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
@@ -14,11 +17,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogAopAspect {
 
+    private static Logger logger;
+
     /**
      * 定义切点
      */
-    @Pointcut("execution(public * com.dev..controller..*(..)))")
-    public void LogAopAspect(){
+    @Pointcut("execution(public * com.dev..service.impl..*(..)))")
+    public void LogAopAspect() {
 
     }
 
@@ -55,20 +60,23 @@ public class LogAopAspect {
 //    }
 
     /**
-     * @description  使用环绕通知
+     * @description 使用环绕通知
      */
     @Around("LogAopAspect()")
-    public void doAroundGame(ProceedingJoinPoint pjp) throws Throwable {
+    public Object doAroundGame(ProceedingJoinPoint pjp) throws Throwable {
         //获取方法名
         String method = pjp.getSignature().getName();
-        try{
-            System.out.println("执行方法开始：——————————————————————————————————" + method);
+        Object o = R.fail("系统异常，请稍后重试！");
+        try {
+            logger.info("执行方法开始：——————————————————————————————————" + method);
             //调用方法
-            pjp.proceed();
-            System.out.println("方法执行结束：——————————————————————————————————" + method);
-        }
-        catch(Throwable e){
-            System.out.println("方法执行异常：——————————————————————————————————" + method);
+            o = pjp.proceed();
+            logger.info("方法执行结束：——————————————————————————————————" + method);
+        } catch (Throwable e) {
+            logger.error("方法执行异常：——————————————————————————————————" + method);
+            logger.error(ThrowableMessageUtil.getMessage(e));
+        } finally {
+            return o;
         }
     }
 }

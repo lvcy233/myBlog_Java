@@ -2,4 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.blog.mapper.BlogCategoriesMapper">
 
+    <select id="queryByCategories" resultType="map">
+        select
+        blog_id as blogId
+        from blog_categories
+        <where>
+            <if test="categories != null and categories.size > 0">
+                categorie in
+                <foreach collection="categories" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
 </mapper>

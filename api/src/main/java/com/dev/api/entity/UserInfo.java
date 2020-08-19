@@ -50,9 +50,5 @@ public class UserInfo implements Serializable {
      * 用户表id
      */
     private Long userId;
-    /**
-     * token
-     */
-    private String token;
 
 }

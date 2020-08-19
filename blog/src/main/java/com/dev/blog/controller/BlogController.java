@@ -1,9 +1,9 @@
 package com.dev.blog.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dev.blog.service.BlogService;
 import com.dev.core.api.R;
-import org.springframework.data.domain.Page;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -2,6 +2,10 @@ package com.dev.blog.mapper;
 
 import com.dev.api.entity.BlogTags;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.sun.corba.se.spi.ior.ObjectKey;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface BlogTagsMapper extends BaseMapper<BlogTags> {
 
+    List<Map<String, Object>> queryByTags(List<Long> tags);
 }
