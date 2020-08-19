@@ -14,7 +14,9 @@ import com.dev.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -96,11 +98,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //查询用户信息
         UserInfo userInfo = userInfoService.getById(user.getId());
         //返回用户token
-//        String token = jwtConfig.createToken(userInfo.getUserId().toString());
-//        //将token存入redis 设置生存时间未30分钟
-//        redisUtil.set(userInfo.getUserId().toString(),token);
-//        redisUtil.expire(userInfo.getUserId().toString(),1800);
-        //userInfo.setToken(token);
-        return R.success(userInfo);
+        String token = jwtConfig.createToken(userInfo.getUserId().toString());
+        //将token存入redis 设置生存时间未30分钟
+        redisUtil.set(token,userInfo.getUserId().toString());
+        redisUtil.expire(userInfo.getUserId().toString(),1800);
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("data",userInfo);
+        resultMap.put("token",token);
+        return R.success(resultMap);
     }
 }

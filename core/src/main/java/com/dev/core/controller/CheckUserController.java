@@ -1,5 +1,6 @@
 package com.dev.core.controller;
 
+import com.dev.core.annotation.ServiceTokenRequired;
 import com.dev.core.util.RedisUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
