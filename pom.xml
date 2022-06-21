@@ -29,7 +29,7 @@
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud-feign.version>1.4.7.RELEASE</spring-cloud-feign.version>
         <mybatis-plus.version>3.3.1.tmp</mybatis-plus.version>
-        <mysql.version>8.0.17</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <druid>1.1.21</druid>
         <velocity>2.2</velocity>
         <log4j>1.2.17</log4j>
